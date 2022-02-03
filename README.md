@@ -16,6 +16,7 @@ yarn
 
 # installation (backend)
 ```
+
 cd server
 npm install 
 or
@@ -23,6 +24,7 @@ yarn
 
 ## then add a .env file like this 
 MONGODBURI=Your Link
+
 ```
 
 # Run
