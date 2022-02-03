@@ -1,5 +1,5 @@
 import React , {useEffect , useState} from 'react'
-import { Container , AppBar , Typography , Grow , Grid} from "@material-ui/core"
+import { Container , AppBar , Typography , Grow , Grid, useMediaQuery, useTheme} from "@material-ui/core"
 import memories from "./imgs/memories.jpg"
 import Posts from './components/posts/Posts';
 import Form from './components/form/Form';
@@ -11,18 +11,18 @@ const App = () =>{
     const classes = useStyles();
     const dispatch = useDispatch();
     const [currentId , setCurrentId] = useState(null)
-   
+    const theme = useTheme();
+    const ismobile = useMediaQuery(theme.breakpoints.down("md"))             
 
     useEffect(()=>{
-        dispatch(getPosts());                 
+        dispatch(getPosts());    
     }, [  dispatch ])
 
 
     return(
         <Container maxWidth="lg">
                 <AppBar className={classes.appBar} position="static" color="inherit">
-                    <Typography className={classes.heading} variant="h3" align="center">Memories</Typography>
-                    <img className={classes.image} src={memories} alt="memories vector art" height="60" />
+                    <Typography className={classes.heading} variant={ismobile ? "h5" : "h3"} style={{paddingTop : "2px" , paddingBottom: "2px"}} align="center">Share Memories</Typography>
                 </AppBar>
                 <Grow in>
                     <Container>

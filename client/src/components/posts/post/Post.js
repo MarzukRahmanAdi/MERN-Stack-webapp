@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useStyles from './styles'
 import { Card , CardActions , CardContent , CardMedia , Button , Typography } from '@material-ui/core'
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
@@ -12,6 +12,7 @@ import {deletePost , likePost} from '../../../actions/posts'
 const Post = ( { post , setCurrentId } ) => {
     const dispath = useDispatch()
     const classes = useStyles()
+    const [notliked, setNotLiked] = useState(true);
     return(
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
@@ -33,7 +34,7 @@ const Post = ( { post , setCurrentId } ) => {
             <Typography className={classes.title} variant="body2" component="p" color="textSecondary">{post.message}</Typography>
             </CardContent>
             <CardActions>
-                <Button size='small' color="primary" onClick={() => { dispath(likePost(post._id))}} >
+                <Button size='small' color="primary" onClick={notliked ? () => { setNotLiked(false) ; dispath(likePost(post._id))} : ""} >
                     <ThumbUpAltIcon fontSize="small" />
                         &nbsp; Like &nbsp;
                         {post.likeCount}

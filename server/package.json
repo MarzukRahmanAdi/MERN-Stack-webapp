@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+
   },
   "keywords": [],
   "author": "Iron Shark Adi",
@@ -17,5 +19,9 @@
     "express": "^4.17.1",
     "mongoose": "^5.10.18",
     "nodemon": "^2.0.6"
+  },
+  "engines": {
+    "node": "17.3.0"
   }
+
 }
